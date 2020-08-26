@@ -1,4 +1,4 @@
-#Ubicoin
+#CryptoCoin
 
 This project was generated with Docker version 19.03.12
 
