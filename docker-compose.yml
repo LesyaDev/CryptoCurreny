@@ -3,16 +3,16 @@ services:
     postgres:
         image: postgres:12.3
         restart: always
-        container_name: postgres_ubicoin
+        container_name: postgres_cryptocoin
         ports:
             - 5432:5432
         environment:
           - POSTGRES_USER=postgres
           - POSTGRES_PASSWORD=admin
-          - POSTGRES_DB=ubicoin
+          - POSTGRES_DB=cryptocoin
           - POSTGRES_PORT=5432
           - POSTGRES_HOST=0.0.0.0
-          - DATABASE_URL=postgres://postgres:admin@postgres_ubicoin:5432/ubicoin
+          - DATABASE_URL=postgres://postgres:admin@postgres:5432/cryptocoin
         volumes:
             - /data/postgres:/data/postgres
 
@@ -30,7 +30,7 @@ services:
             - POSTGRES_DB=ubicoin
             - POSTGRES_PORT=5432
             - POSTGRES_HOST=0.0.0.0
-            - DATABASE_URL=postgres://postgres:admin@postgres_ubicoin:5432/ubicoin
+            - DATABASE_URL=postgres://postgres:admin@postgres_cryptocoin:5432/ubicoin
         links:
             - postgres
         depends_on:
