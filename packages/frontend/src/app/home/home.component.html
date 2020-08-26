@@ -1,0 +1,29 @@
+<ng-container *ngIf='isShowUserInfo'>
+    <mat-card>
+        <mat-card-title>{{userName}}</mat-card-title>
+        <mat-card-content>Coins: {{coins}}</mat-card-content>
+    </mat-card>
+    <mat-card>
+        <form class="giveForm" [formGroup]="giveCoinsForm">
+            <mat-form-field appearance="fill">
+                <mat-label>User</mat-label>
+                <mat-select formControlName="currentUser">
+                    <mat-option *ngFor="let user of usersList;" [value]="user">
+                        {{user["email"]}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <label>
+                    <input matInput type="number"
+                           formControlName="presentCoins"
+                           placeholder="coins"
+                           [min]="1" [max]="coins">
+                </label>
+            </mat-form-field>
+            <br>
+            <button mat-stroked-button (click)="giveCoins()" type="submit">Present</button>
+        </form>
+    </mat-card>
+</ng-container>

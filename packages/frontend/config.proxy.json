@@ -1,0 +1,5 @@
+{
+  "/api/*": "http://0.0.0.0:8083",
+  "secure": false,
+  "logLevel": "debug"
+}

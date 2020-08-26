@@ -1,0 +1,31 @@
+{
+  "name": "ubicoin",
+  "private": true,
+  "scripts": {
+    "postinstall": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap",
+    "bootstrap:production": "lerna bootstrap -- --production",
+    "test": "lerna run test --stream",
+    "test:e2e": "lerna run test:e2e",
+    "test:client": "lerna run test --scope=/ubicoin/packages/frontend",
+    "test:server": "lerna run test --scope=/ubicoin/packeges/backend",
+    "lint": "lerna run lint",
+    "lint:fix": "lerna run lint:fix",
+    "build": "lerna run build --stream",
+    "build:client": "lerna run build --scope=ubicoin/packeges/frontend --stream",
+    "build:server": "lerna run build --scope=ubicoin/packeges/backend --stream",
+    "start": "lerna run start --stream --parallel",
+    "start:client": "lerna run start --scope=frontend --stream",
+    "start:server": "lerna run start --scope=backend --stream"
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.160",
+    "dotenv": "^8.2.0",
+    "express-bearer-token": "^2.4.0",
+    "node-powershell": "^4.0.0",
+    "pm2": "^4.4.1"
+  }
+}

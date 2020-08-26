@@ -1,0 +1,14 @@
+<mat-card fxLayout="row" >
+
+    <div class='leftFlex' fxLayout="row" align="rightFlex">
+        <mat-card-title>CryptoCoin</mat-card-title>
+    </div>
+
+    <div class='rightFlex'>
+        <ng-container *ngIf='isShowSignOutButton'>
+            <button mat-stroked-button (click)="signOut()">Sign Out</button>
+        </ng-container>
+    </div>
+</mat-card>
+
+<router-outlet></router-outlet>

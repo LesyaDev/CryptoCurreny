@@ -1,0 +1,25 @@
+0 silly argv {
+0 silly argv   _: [ 'run' ],
+0 silly argv   scope: 'frontend',
+0 silly argv   stream: true,
+0 silly argv   lernaVersion: '3.22.1',
+0 silly argv   '$0': 'node_modules\\lerna\\cli.js',
+0 silly argv   script: 'start'
+0 silly argv }
+1 notice cli v3.22.1
+2 verbose rootPath C:\unibrix\ubicoin\ubicoin
+3 notice filter including "frontend"
+4 info filter [ 'frontend' ]
+5 info Executing command in 1 package: "npm run start"
+6 silly npmRunScript.stream [ 'start', [], 'frontend' ]
+7 silly getExecOpts C:\unibrix\ubicoin\ubicoin\packages\frontend undefined
+8 error MaxBufferError: stderr maxBuffer exceeded
+8 error     at PassThrough.<anonymous> (C:\unibrix\ubicoin\ubicoin\node_modules\get-stream\index.js:41:19)
+8 error     at PassThrough.emit (events.js:326:22)
+8 error     at addChunk (_stream_readable.js:303:12)
+8 error     at readableAddChunk (_stream_readable.js:275:11)
+8 error     at PassThrough.Readable.push (_stream_readable.js:218:10)
+8 error     at PassThrough.Transform.push (_stream_transform.js:166:32)
+8 error     at PassThrough.afterTransform (_stream_transform.js:101:10)
+8 error     at PassThrough._transform (_stream_passthrough.js:46:3)
+8 error     at PassThrough.Transform._read (_stream_transform.js:205:10)

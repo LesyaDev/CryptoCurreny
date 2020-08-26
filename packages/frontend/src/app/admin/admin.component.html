@@ -1,0 +1,40 @@
+<ng-container *ngIf="isShowTable">
+    <div class="tableInfoAboutUser">
+        <form [formGroup]="mainFormGroup">
+            <table>
+                <thead>
+                <ng-container *ngFor="let head of headerColumns">
+                    <th>{{head}}</th>
+                </ng-container>
+                </thead>
+                <tbody>
+
+                <ng-container formArrayName="tableFormArray"
+                              *ngFor="let group of getFormControls.controls ; let i=index">
+                    <tr [formGroupName]="i">
+                        <td>{{group.get('userName').value}}</td>
+                        <td>{{group.get('userCoin').value}}</td>
+                        <td>
+                            <label>
+                                <input matInput type="number"
+                                       formControlName="addCoinForm" [min]="1" [max]="100">
+                            </label>
+                            <button class="buttonAddCoins" mat-button (click)="addCoinsToUser(group, i)"
+                                    type="submit">
+                                <mat-icon>add_circle_outline</mat-icon>
+                            </button>
+                        </td>
+
+                        <td>
+                            <button mat-button type="button" (click)="dialogDeleteUser(i)">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </ng-container>
+
+                </tbody>
+            </table>
+        </form>
+    </div>
+</ng-container>

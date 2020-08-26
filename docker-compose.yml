@@ -1,0 +1,49 @@
+version: "3.8"
+services:
+    postgres:
+        image: postgres:12.3
+        restart: always
+        container_name: postgres_ubicoin
+        ports:
+            - 5432:5432
+        environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=admin
+          - POSTGRES_DB=ubicoin
+          - POSTGRES_PORT=5432
+          - POSTGRES_HOST=0.0.0.0
+          - DATABASE_URL=postgres://postgres:admin@postgres_ubicoin:5432/ubicoin
+        volumes:
+            - /data/postgres:/data/postgres
+
+    backend:
+        build:
+            context: ./packages/backend
+            dockerfile: Dockerfile
+        restart: always
+        ports:
+           - "127.0.0.1:8083:8083"
+        environment:
+            - PORT=8083
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=admin
+            - POSTGRES_DB=ubicoin
+            - POSTGRES_PORT=5432
+            - POSTGRES_HOST=0.0.0.0
+            - DATABASE_URL=postgres://postgres:admin@postgres_ubicoin:5432/ubicoin
+        links:
+            - postgres
+        depends_on:
+            - postgres
+
+    frontend:
+        build:
+            context: ./packages/frontend
+            dockerfile: Dockerfile
+        restart: always
+        ports:
+            - "4200:4200"
+        environment:
+          - SERVICE_PORT=0.0.0.0:8083
+        depends_on:
+            - backend
